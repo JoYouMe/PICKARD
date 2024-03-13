@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oauth kakao</title>
+  </head>
+  <body>
+    <script server="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+      Kakao.init('37c849dca87bb337a49024603ee61d63');
+      console.log(Kakao.isInitialized());
+
+      // function kakaoLogin() {
+      //   Kakao.Auth.login({
+      //     success: function (response) {
+      //       Kakao.API.request({
+      //         url: '/v2/user/me',
+      //         success: function (res) {
+      //           console.log(response);
+      //           const id = res.id;
+      //           const profileImg = res.properties.profile_image;
+      //           const name = res.properties.nickname;
+      //           alert(`Login successful! ID: ${id} Name: ${name}`);
+      //         },
+      //         fail: function (error) {
+      //           console.log(error);
+      //         },
+      //       });
+      //     },
+      //     fail: function (error) {
+      //       console.log(error);
+      //     },
+      //   });
+      // }
+
+      // function kakaoLogout() {
+      //   if (Kakao.Auth.getAccessToken()) {
+      //     Kakao.API.request({
+      //       url: '/v1/user/unlink',
+      //       success: function (response) {
+      //         console.log(response);
+      //         alert('Logout successful!');
+      //       },
+      //       fail: function (error) {
+      //         console.log(error);
+      //       },
+      //     });
+      //     Kakao.Auth.setAccessToken(undefined);
+      //   }
+      // }
+
+      <div class="bg-white-900">
+        <div class="css-197f4h9 e1p7zl0v0">
+          <div>
+          <div class="css-18v7d79 ezebuvz0">
+            <img src="https://financialshopping-cdn.banksalad.com/shihan_b_big_5acbb579eb.png" width="57" height="90" alt="카드이미지" class="css-13l59is ezebuvz3"/>
+            <div>
+              <h2 class="font-bold leading-28 text-gray-150">신한카드 B.Big(삑)</h2>
+              <div class="h-2">
+                </div>
+                <p class="css-95zuz4 ezebuvz2">월 최대 혜택 48,000원</p>
+                <div class="h-6">
+                  </div>
+                  <ul class="flex flex-wrap"><li class="mb-6 mr-2 rounded-12 bg-gray-750 px-6 text-body-13 font-medium leading-20 text-gray-300">연회비 13,000원</li>
+                    <li class="mb-6 mr-2 rounded-12 bg-gray-750 px-6 text-body-13 font-medium leading-20 text-gray-300">전월실적 30만원 이상</li>
+                    </ul>
+                    <div class="h-2">
+                      </div>
+                      <div class="flex flex-wrap gap-y-8">
+                        <div class="mr-10 flex items-start">
+                          <img src="https://financialshopping-cdn.banksalad.com/bus_3f92db0b67.png" width="18" height="18" alt="대중교통 최대 1만 8천원" class="mr-4 mt-2 h-18 w-18 flex-none"/>
+                          <p class="text-body-15 font-medium text-gray-150">대중교통 최대 1만 8천원</p>
+                          </div>
+                          <div class="mr-10 flex items-start">
+                            <img src="https://financialshopping-cdn.banksalad.com/taxi_81203498f1.png" width="18" height="18" alt="택시 10%" class="mr-4 mt-2 h-18 w-18 flex-none"/>
+                            <p class="text-body-15 font-medium text-gray-150">택시 10%</p>
+                          </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="css-197f4h9 e1p7zl0v0">
+          <div>
+          <div class="css-18v7d79 ezebuvz0">
+            <img src="https://financialshopping-cdn.banksalad.com/shihan_b_big_5acbb579eb.png" width="57" height="90" alt="카드이미지" class="css-13l59is ezebuvz3"/>
+            <div>
+              <h2 class="font-bold leading-28 text-gray-150">현대카드 B.Big(삑)</h2>
+              <div class="h-2">
+                </div>
+                <p class="css-95zuz4 ezebuvz2">월 최대 혜택 48,000원</p>
+                <div class="h-6">
+                  </div>
+                  <ul class="flex flex-wrap"><li class="mb-6 mr-2 rounded-12 bg-gray-750 px-6 text-body-13 font-medium leading-20 text-gray-300">연회비 13,000원</li>
+                    <li class="mb-6 mr-2 rounded-12 bg-gray-750 px-6 text-body-13 font-medium leading-20 text-gray-300">전월실적 30만원 이상</li>
+                    </ul>
+                    <div class="h-2">
+                      </div>
+                      <div class="flex flex-wrap gap-y-8">
+                        <div class="mr-10 flex items-start">
+                          <img src="https://financialshopping-cdn.banksalad.com/bus_3f92db0b67.png" width="18" height="18" alt="대중교통 최대 1만 8천원" class="mr-4 mt-2 h-18 w-18 flex-none"/>
+                          <p class="text-body-15 font-medium text-gray-150">대중교통 최대 1만 8천원</p>
+                          </div>
+                          <div class="mr-10 flex items-start">
+                            <img src="https://financialshopping-cdn.banksalad.com/taxi_81203498f1.png" width="18" height="18" alt="택시 10%" class="mr-4 mt-2 h-18 w-18 flex-none"/>
+                            <p class="text-body-15 font-medium text-gray-150">택시 10%</p>
+                          </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+    </script>
+    <a href="/user/oauth/kakao"
+      ><img
+        server="https://developers.kakao.com/static/images/m/product/sub/kakaoLogin.png"
+    /></a>
+  </body>
+</html>
