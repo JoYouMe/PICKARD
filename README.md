@@ -1,4 +1,20 @@
 # 💳 PICKARD
+## 🎈 프로젝트 개요
+카드 피킹률은 카드의 혜택을 얼마나 잘 누리고 있는지, 카드를 발급 받게 된다면 혜택을 얼마나 잘 받을 수 있는지에 대하여 확인할 수 있는 수치입니다. 소비 패턴 개인화 분석을 통해 사용자가 피킹률이 높은 고효율의 카드를 사용할 수 있도록 추천하는 것을 목적으로 합니다.
+
+## ⚒️ 사용 기술
+<p>
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Koa-33333D?style=flat-square&logo=Koa&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=flat-square&logo=node.js&logoColor=white"/>
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white"/></a>&nbsp 
+  <!-- <br>
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=ubuntu&logoColor=white"/></a>&nbsp
+  <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=flat-square&logo=amazon-aws&logoColor=white"/></a>&nbsp -->
+</p>
+
+
 
 ## 🧙‍♀️ 요구사항
 | **구분**      | **주 기능**     | **상세 기능**                  | **설명**                                                                   |
@@ -25,4 +41,4 @@
 ---
 ## 🗺️ ERD
 ![스크린샷 2024-03-12 174002](https://github.com/JoYouMe/PICKARD/assets/97943318/2095b389-81c9-4d5c-afca-b87f48dbc396)
----
+
