@@ -6,6 +6,7 @@ import UserService from "../services/userService";
 import { Token } from "../util/token";
 import { Database } from "../database/config";
 import { Calculator } from "../util/calculator";
+import { CardBenefits, ProdCard } from "../interfaces/ICard";
 
 export default class Users {
     private readonly userService: UserService;
@@ -87,7 +88,7 @@ export default class Users {
     }
 
     loginWithKakao = async (ctx: Context) => {
-        const { code } = ctx.request.query as any
+        const { code } = ctx.request.query as string
         const client = await this.db.connect();
         try {
             await client.query('BEGIN');
@@ -185,7 +186,7 @@ export default class Users {
     // 현재 보유 카드 삭제
     deleteUserCard = async (ctx: Context) => {
         const { userCardId } = ctx.params;
-        const userId = ctx.request.body as any;
+        const userId = ctx.request.body as UserCard;
         const client = await this.db.connect();
         try {
             await client.query('BEGIN');
@@ -226,7 +227,7 @@ export default class Users {
             if (!pickingResult) {
                 throw new Error('picking 조회 실패')
             }
-            const result = pickingResult.map((item: any) => ({
+            const result = pickingResult.map((item: ProdCard) => ({
                 prod_card_id: item.prod_card_id,
                 card_type: item.card_type,
                 card_name: item.card_name,
@@ -239,7 +240,7 @@ export default class Users {
                 card_benefit_id: item.card_benefit_id,
                 total_benefit: item.total_benefit,
                 picking: `${item.picking}%`,
-                industrys: item.industrys.map((industryItem: any) => ({
+                industrys: item.industrys.map((industryItem: CardBenefits) => ({
                     industry: industryItem.industry,
                     rate: industryItem.rate,
                     benefit: industryItem.benefit,
@@ -257,7 +258,7 @@ export default class Users {
     // 보유카드, 추천카드 비교
     cardComparsion = async (ctx: Context) => {
         const { userCardId } = ctx.params;
-        const userId = ctx.request.body as any;
+        const userId = ctx.request.body as number;
         const client = await this.db.connect();
         try {
 

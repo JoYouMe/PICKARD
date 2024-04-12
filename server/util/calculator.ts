@@ -1,7 +1,9 @@
+import { ProdCard } from "../interfaces/ICard";
+
 export class Calculator {
 
     // 업종별 혜택 계산
-    totalBenenfit = async (industryRate: any[], industryAmount: any[]) => {
+    totalBenenfit = async (industryRate: ProdCard[], industryAmount: ProdCard[]) => {
         try {
             const cards_industries = industryRate.map(row => {
                 const matching_question = industryAmount.find(v => v.industry === row.industry);
@@ -16,10 +18,10 @@ export class Calculator {
     }
 
     // 카드별 혜택 계산
-    picking = async (cards_industries: any[], pay_avg_per_month: number) => {
+    picking = async (cards_industries: ProdCard[], pay_avg_per_month: number) => {
         const card_total_benefits = cards_industries.reduce((acc, card) => {
             const annual_fee = card.annual_fee / 12;
-            const existingCard = acc.find((existing: { prod_card_id: any }) => existing.prod_card_id === card.prod_card_id);
+            const existingCard = acc.find((existing: { prod_card_id: number }) => existing.prod_card_id === card.prod_card_id);
 
             if (existingCard) {
                 existingCard.industrys.push({

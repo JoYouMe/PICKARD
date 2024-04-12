@@ -4,7 +4,7 @@ import { ProdCard, QuestionIndustry, Questions } from "../interfaces/ICard";
 
 export default class CardService {
     private db: Database;
-    private profitsArray: any[];
+    private profitsArray: string[];
 
     constructor() {
         this.db = Database.getInstance();
@@ -18,7 +18,7 @@ export default class CardService {
      * @throws {Error} - 저장 실패 시 예외 발생
      */
 
-    async questionBasic(client: Pool, questions: Questions, user_id: any) {
+    async questionBasic(client: Pool, questions: Questions, user_id: number) {
         try {
             const { card_type, benefit_type, pay_avg_per_month } = questions;
             const query = {
@@ -75,7 +75,7 @@ export default class CardService {
      * @returns 
      */
 
-    async getQuestion(question_id: any) {
+    async getQuestion(question_id: number) {
         try {
             const query = {
                 text: `
@@ -104,7 +104,7 @@ export default class CardService {
      * @returns 
      */
 
-    async profitsList(questionQueryResult: any[]) {
+    async profitsList(questionQueryResult: Questions[]) {
         try {
             const { card_type, benefit_type, pay_avg_per_month } = questionQueryResult[0];
             const query = {
@@ -212,7 +212,7 @@ export default class CardService {
             const result: QueryResult = await this.db.query(query);
 
             return result.rows.reduce((acc, row) => {
-                const existingCard = acc.find((card: { prod_card_id: any; }) => card.prod_card_id === row.prod_card_id);
+                const existingCard = acc.find((card: { prod_card_id: number; }) => card.prod_card_id === row.prod_card_id);
 
                 if (existingCard) {
                     existingCard.industry.push({

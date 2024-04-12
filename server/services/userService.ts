@@ -2,6 +2,7 @@
 import { Pool, QueryResult } from "pg";
 import { KaKaoData, LoginRequest, UserCard, UserDetails, UserIndustry } from "../interfaces/IUser";
 import { Database } from "../database/config";
+import { UpdatePost } from "../interfaces/IPost";
 
 export default class UserService {
     private db: Database;
@@ -245,7 +246,7 @@ export default class UserService {
         }
     }
 
-    async updatePost(client: Pool, updatePost: any, postId: number) {
+    async updatePost(client: Pool, updatePost: UpdatePost, postId: number) {
         const { userId, title, content } = updatePost
         try {
             const checkUserQuery = {
@@ -288,7 +289,7 @@ export default class UserService {
         }
     }
 
-    async getUserIndustry(user_card_id: any) {
+    async getUserIndustry(user_card_id: number) {
         try {
             const query = {
                 text: `
@@ -316,7 +317,7 @@ export default class UserService {
         }
     }
 
-    async getUserProdCard(prod_card_id: any) {
+    async getUserProdCard(prod_card_id: number) {
         try {
             const query = {
                 text: `

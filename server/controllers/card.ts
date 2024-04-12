@@ -1,6 +1,6 @@
 import { Database } from '../database/config';
 import CardService from '../services/cardService';
-import { Questions } from '../interfaces/ICard';
+import { ProdCard, QuestionIndustry, Questions } from '../interfaces/ICard';
 import { Context } from 'koa';
 import { Calculator } from '../util/calculator';
 import { v4 as uuidv4 } from 'uuid';
@@ -32,12 +32,12 @@ export default class Card {
       const questionIndustry = { question_id: createdQuestions.question_id, industry: questions.industry, amount: questions.amount }
       await this.cardService.questionIndustry(client, questionIndustry)
       await client.query('COMMIT');
-      const getQuestion: any = await this.cardService.getQuestion(questionIndustry.question_id)
-      const benefitArray: any = {};
-      getQuestion.forEach((e: any) => {
+      const getQuestion: string[] = await this.cardService.getQuestion(questionIndustry.question_id)
+      const benefitArray = {};
+      getQuestion.forEach((e: QuestionIndustry) => {
         benefitArray[e.industry] = e.amount;
       });
-      const result: any = {
+      const result: string[] = {
         ...createdQuestions,
         benefit: benefitArray
       };
@@ -60,8 +60,8 @@ export default class Card {
       if (!getQuestion) {
         throw new Error('questionId 조회 실패');
       }
-      const result: any = {};
-      getQuestion.forEach((e: any) => {
+      const result = {};
+      getQuestion.forEach((e: QuestionIndustry) => {
         result[e.industry] = e.amount;
       });
       ctx.body = { success: true, result };
@@ -91,7 +91,7 @@ export default class Card {
       if (!pickingResult) {
         throw new Error('picking 조회 실패')
       }
-      const result = pickingResult.map((item: any) => ({
+      const result = pickingResult.map((item: ProdCard) => ({
         prod_card_id: item.prod_card_id,
         card_type: item.card_type,
         card_name: item.card_name,
@@ -104,7 +104,7 @@ export default class Card {
         card_benefit_id: item.card_benefit_id,
         total_benefit: item.total_benefit,
         picking: `${item.picking}%`,
-        industrys: item.industrys.map((industryItem: any) => ({
+        industrys: item.industrys.map((industryItem: QuestionIndustry) => ({
           industry: industryItem.industry,
           rate: industryItem.rate,
           benefit: industryItem.benefit,
@@ -123,7 +123,7 @@ export default class Card {
   getProfitsCardById = async (ctx: Context) => {
     const { id } = ctx.params;
     try {
-      const questionId = ctx.request.body as any
+      const questionId = ctx.request.body as Questions
       const getQuestion = await this.cardService.getQuestion(questionId)
       if (!getQuestion) {
         throw new Error('questionId 조회 실패');
@@ -133,7 +133,7 @@ export default class Card {
       if (!profitsList) {
         throw new Error('questionId 조회 실패');
       }
-      const profitCard = profitsList.filter((e: any) => {
+      const profitCard = profitsList.filter((e: Questions) => {
         e.prod_card_id === id
       })
       console.log(profitCard)
@@ -169,7 +169,7 @@ export default class Card {
   }
 
   // views
-  renderRecommendation = async (cardsList: any[]) => {
+  renderRecommendation = async (cardsList: string[]) => {
     const templatePath = './server/views/main.ejs';
     const template = fs.readFileSync(templatePath, 'utf-8');
     const renderedHtml = ejs.render(template, { cardsList });
@@ -177,7 +177,7 @@ export default class Card {
     return renderedHtml;
   }
 
-  renderCardDetails = async (selectedCard: any) => {
+  renderCardDetails = async (selectedCard: string) => {
     const templatePath = './server/views/card-details.html';
     const template = fs.readFileSync(templatePath, 'utf-8');
     const renderedHtml = ejs.render(template, { selectedCard });
